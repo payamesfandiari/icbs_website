@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+
+{% block css %}
+    {{ block.super }}
+    <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="row">
+        <div id='timeline-embed-ch' style="width: 100%; height: 600px"></div>
+    </div>
+    <div class="row">
+        <div id='timeline-embed-loan' style="width: 100%; height: 600px"></div>
+    </div>
+
+{% endblock %}
+
+
+{% block javascript %}
+    {{ block.super }}
+    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+    <script type="text/javascript">
+
+
+        $(function() {
+            $("#load_timeline").submit(function (event) {
+                event.preventDefault();
+                if ( $( ".required" ).val().length === 0 ) {
+                    $("#error_msg").show();
+                    // Prevent the form from submitting
+
+                } else {
+                    national_id = $( ".required" ).val();
+                    $("#error_msg").hide();
+                    $.ajax({
+                    url: 'ajaxloaderdata/',
+                    type: 'post', // This is the default though, you don't actually need to always mention it
+                    data: {national_id: national_id},
+                    success: function(data) {
+
+
+                        timeline = new TL.Timeline('timeline-embed',
+                                data,{"scale_factor" : 0.5,});
+                        console.log(timeline);
+                        $('.tl-text').css({
+                           "direction" : "rtl",
+                            "text-align" : "right",
+                        });
+                    },
+                    failure: function(data) {
+                        alert('Got an error dude');
+                    }
+                });
+
+                    // Run $.ajax() here
+                }
+
+
+
+
+
+
+            });
+
+
+
+        });
+
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load staticfiles i18n %}
+
+
+
+
+{% block content%}
+
+    <div class="table-responsive">
+        {% if history %}
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>{% trans "action time" %}</th>
+                    <th>{% trans "user" %}</th>
+                    <th>{% trans "national id" %}</th>
+                    <th>{% trans "response_cheque" %}</th>
+                    <th>{% trans "response_loans" %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in history %}
+                    <tr>
+                        <th scope="row">{{ item.action_time|date:"DATETIME_FORMAT" }}</th>
+                        <td>{{ item.user.get_username }}</td>
+                        <td>{{ item.req_national_id }}</td>
+                        <td>{{ item.resp_cheque}}</td>
+                        <td>{{ item.resp_loans}}</td>
+                    </tr>
+
+
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            {% blocktrans %}
+
+            {% endblocktrans %}
+        {% endif %}
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,27 @@
+
+
+{% block content %}
+    <div id="query_content">
+
+    </div>
+    {% if result_types.check %}
+        <div class="row panel panel-primary">
+            <div class="panel-heading">چک های برگشتی</div>
+            <div id='timeline-embed-ch' style="width: 100%; height: 400px"></div>
+        </div>
+    {% else %}
+        <div class="row alert alert-info">چک برگشتی در سیستم یافت نشد</div>
+
+    {% endif %}
+    {% if result_types.loan %}
+        <div class="row panel panel-primary">
+            <div class="panel-heading">تسهیلات</div>
+            <div id='timeline-embed-loan' style="width: 100%; height: 400px"></div>
+        </div>
+    {% else %}
+        <div class="row alert alert-info">تسهیلاتی در سیستم یافت نشد</div>
+
+    {% endif %}
+
+
+{% endblock %}

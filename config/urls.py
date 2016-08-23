@@ -20,7 +20,8 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
 
     # Your stuff: custom urls includes go here
-
+    url(r'^meeting/', include('website.meeting.urls', namespace='meeting')),
+    url(r'^presentation/', include('website.presentation.urls', namespace='presentation')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

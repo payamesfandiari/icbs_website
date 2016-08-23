@@ -12,6 +12,8 @@ from __future__ import absolute_import, unicode_literals
 
 import environ
 
+gettext_noop = lambda s: s
+
 ROOT_DIR = environ.Path(__file__) - 3  # (website/config/settings/common.py - 3 = website/)
 APPS_DIR = ROOT_DIR.path('website')
 
@@ -39,6 +41,7 @@ THIRD_PARTY_APPS = (
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
+
 )
 
 # Apps specific for this project go here.
@@ -46,6 +49,8 @@ LOCAL_APPS = (
     # custom users app
     'website.users.apps.UsersConfig',
     # Your stuff: custom apps go here
+    'website.meeting.apps.MeetingConfig',
+    'website.presentation.apps.PresentationConfig'
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -61,6 +66,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 )
 
 # MIGRATIONS CONFIGURATION
@@ -100,7 +106,15 @@ MANAGERS = ADMINS
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
     # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
-    'default': env.db('DATABASE_URL', default='postgres:///website'),
+    # 'default': env.db('DATABASE_URL', default='postgres:///website'),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'website',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': '/tmp/',
+        'PORT': '5432',
+    },
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
@@ -114,7 +128,17 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 TIME_ZONE = 'UTC'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#language-code
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fa'
+
+
+LANGUAGES = [
+    ('en', gettext_noop('English')),
+    ('fa', gettext_noop('Persian')),
+]
+
+LOCALE_PATHS = (
+    str(ROOT_DIR) + '/locale',
+)
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
@@ -213,7 +237,7 @@ ACCOUNT_AUTHENTICATION_METHOD = 'username'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
-ACCOUNT_ALLOW_REGISTRATION = env.bool('DJANGO_ACCOUNT_ALLOW_REGISTRATION', True)
+ACCOUNT_ALLOW_REGISTRATION = env.bool('DJANGO_ACCOUNT_ALLOW_REGISTRATION', False)
 ACCOUNT_ADAPTER = 'website.users.adapters.AccountAdapter'
 SOCIALACCOUNT_ADAPTER = 'website.users.adapters.SocialAccountAdapter'
 

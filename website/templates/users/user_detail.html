@@ -1,36 +1,38 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static i18n%}
 
-{% block title %}User: {{ object.username }}{% endblock %}
+{% block title %}{% trans "User"%}: {{ object.username }}{% endblock %}
+{% block head %}
+    {% if object == request.user %}
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-12 ">
+                    <a class="btn btn-primary" href="{% url 'users:update' %}">{% trans "My Info"%}</a>
+                    <a class="btn btn-primary" href="{% url 'account_email' %}">{% trans "E-Mail"%}</a>
+                    {% if object.num_of_requests_used < object.num_of_requests %}<a class="btn btn-primary" href="{% url 'presentation:search' %}">{% trans "Search"%}</a>{% endif %}
+                    <!-- Your Stuff: Custom user template urls -->
+                </div>
+
+
+            </div>
+            <div class="row">
+                <p>
+                    {% if object.num_of_requests_used >= object.num_of_requests %}
+                        <div class="alert-info alert">کاربر گرامی تعداد تراکنش های شما به اتمام رسیده.</div>
+                    {% else %}
+                        <div class="alert alert-success">{% blocktrans with name=user.name|title all=object.num_of_requests spent=object.num_of_requests_used %}{{ name }} welcome. You have {{ all }} overall which you spent {{ spent }} of them.{% endblocktrans %}</div>
+                    {% endif %}
+                </p>
+
+            </div>
+
+
+        </div>
+    {% endif %}
+{% endblock %}
 
 {% block content %}
-<div class="container">
 
-  <div class="row">
-    <div class="col-sm-12">
-
-      <h2>{{ object.username }}</h2>
-      {% if object.name %}
-        <p>{{ object.name }}</p>
-      {% endif %}
-    </div>
-  </div>
-
-{% if object == request.user %}
-<!-- Action buttons -->
-<div class="row">
-
-  <div class="col-sm-12 ">
-    <a class="btn btn-primary" href="{% url 'users:update' %}">My Info</a>
-    <a class="btn btn-primary" href="{% url 'account_email' %}">E-Mail</a>
-    <!-- Your Stuff: Custom user template urls -->
-  </div>
-
-</div>
-<!-- End Action buttons -->
-{% endif %}
-
-
-</div>
 {% endblock content %}
 

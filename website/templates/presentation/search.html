@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load staticfiles i18n %}
+
+
+{% block css %}
+    {{ block.super }}
+    <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+
+{% endblock %}
+
+{% block content %}
+
+
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-4" >
+                <form class="form-inline" id="load_timeline" action="" method="post">
+                    {% csrf_token %}
+                    <div id="div_national_id" class="form-group">
+                        {{ search.query_n_id.errors }}
+
+                        {{ search }}
+                        <input type="submit"  value="گرفتن گزارش" class="btn btn-primary"/>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <div class="row clearfix" style="direction: ltr;margin-top: 5em;">
+            <div class="col-sm-12" id="results">
+
+            </div>
+
+        </div>
+
+{% endblock %}
+
+{% block javascript %}
+    {{ block.super }}
+    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+{% endblock %}

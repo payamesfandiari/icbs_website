@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-21 09:16+0000\n"
+"POT-Creation-Date: 2016-08-30 08:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,6 +23,50 @@ msgstr ""
 
 #: config/settings/common.py:136
 msgid "Persian"
+msgstr ""
+
+#: website/meeting/models.py:13
+msgid "Name"
+msgstr ""
+
+#: website/meeting/models.py:14
+msgid "Lastname"
+msgstr ""
+
+#: website/meeting/models.py:15
+msgid "Company"
+msgstr ""
+
+#: website/meeting/models.py:16
+msgid "Phone"
+msgstr ""
+
+#: website/meeting/models.py:17
+msgid "Address"
+msgstr ""
+
+#: website/meeting/models.py:18
+msgid "City"
+msgstr ""
+
+#: website/meeting/models.py:19
+msgid "Email"
+msgstr ""
+
+#: website/meeting/models.py:20
+msgid "Website"
+msgstr ""
+
+#: website/meeting/models.py:21
+msgid "Rank"
+msgstr ""
+
+#: website/meeting/models.py:27
+msgid "Applicator"
+msgstr ""
+
+#: website/meeting/models.py:28
+msgid "Applicators"
 msgstr ""
 
 #: website/presentation/models.py:16
@@ -142,7 +186,7 @@ msgstr ""
 
 #: website/templates/account/login.html:7
 #: website/templates/account/login.html:11
-#: website/templates/account/login.html:44 website/templates/base.html:58
+#: website/templates/account/login.html:44 website/templates/base.html:63
 msgid "Sign In"
 msgstr ""
 
@@ -303,7 +347,7 @@ msgid ""
 "mail address</a>."
 msgstr ""
 
-#: website/templates/base.html:41 website/templates/pages/home.html:6
+#: website/templates/base.html:41 website/templates/pages/home.html:14
 msgid "Company Name"
 msgstr ""
 
@@ -315,11 +359,23 @@ msgstr ""
 msgid "About Us"
 msgstr ""
 
-#: website/templates/base.html:51
+#: website/templates/base.html:47
+msgid "Our Customers"
+msgstr ""
+
+#: website/templates/base.html:48
+msgid "Contact Us"
+msgstr ""
+
+#: website/templates/base.html:52
+msgid "Request Meeting"
+msgstr ""
+
+#: website/templates/base.html:56
 msgid "My Profile"
 msgstr ""
 
-#: website/templates/base.html:54
+#: website/templates/base.html:59
 msgid "Sign out"
 msgstr ""
 
@@ -334,22 +390,22 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: website/templates/users/user_detail.html:11
-msgid "My Info"
-msgstr ""
-
-#: website/templates/users/user_detail.html:12
-msgid "E-Mail"
-msgstr ""
-
-#: website/templates/users/user_detail.html:13
-msgid "Search"
-msgstr ""
-
-#: website/templates/users/user_detail.html:21
+#: website/templates/users/user_detail.html:17
 #, python-format
 msgid ""
 "%(name)s welcome. You have %(all)s overall which you spent %(spent)s of them."
+msgstr ""
+
+#: website/templates/users/user_detail.html:26
+msgid "My Info"
+msgstr ""
+
+#: website/templates/users/user_detail.html:27
+msgid "E-Mail"
+msgstr ""
+
+#: website/templates/users/user_detail.html:28
+msgid "Search"
 msgstr ""
 
 #: website/users/models.py:16

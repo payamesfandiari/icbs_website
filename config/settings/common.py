@@ -112,8 +112,6 @@ DATABASES = {
         'NAME': 'website',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': '/tmp/',
-        'PORT': '5432',
     },
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
@@ -189,7 +187,7 @@ TEMPLATES = [
 ]
 
 # See: http://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # STATIC FILE CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -256,7 +254,7 @@ INSTALLED_APPS += ('website.taskapp.celery.CeleryConfig',)
 INSTALLED_APPS += ('kombu.transport.django',)
 BROKER_URL = env('CELERY_BROKER_URL', default='django://')
 if BROKER_URL == 'django://':
-    CELERY_RESULT_BACKEND = 'redis://'
+    CELERY_RESULT_BACKEND = 'amqp://'
 else:
     CELERY_RESULT_BACKEND = BROKER_URL
 ########## END CELERY

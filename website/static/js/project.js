@@ -1,5 +1,8 @@
 /* Project specific Javascript goes here. */
 $(function(){
+    $('body').smoothScroll({
+        delegateSelector: 'ul.navbar-nav a'
+    });
     $('#load_timeline').submit(function (e) {
         $.post('/presentation/search/',$(this).serialize(),function(data){
             if(data.error){
@@ -31,7 +34,13 @@ $(function(){
             "text-align" : "right",
         });
     }
-
+    $window = $(window);
+    winH = $window.height();
+    winH = winH - 150;
+    var msgDiv = $('.messages');
+    if(msgDiv){
+        msgDiv.css('margin-top',winH+'px');
+    }
 
 
 

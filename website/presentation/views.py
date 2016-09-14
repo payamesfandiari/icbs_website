@@ -1,11 +1,11 @@
 from datetime import datetime
 
-from django.template import Context
 from django.template.loader import render_to_string
 from django.views.generic import ListView, View
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
-from django.http import JsonResponse, HttpResponseRedirect
+from django.shortcuts import render
+from django.http import JsonResponse
+
 
 from .models import UserRequest
 from .forms import SearchForm
@@ -42,21 +42,22 @@ class Search(LoginRequiredMixin, View):
         form = SearchForm(request.POST)
         user = request.user
         if form.is_valid() and user.num_of_requests_used < user.num_of_requests:
-
             data_getter = GetDataFromInquiry()
             query = form.cleaned_data['query_n_id']
-            req_obj = UserRequest.objects.filter(req_national_id=query)[0]
             results = dict()
-            if req_obj:
-                if req_obj.resp_cheque:
-                    results['check'] = req_obj.resp_cheque
-                else:
-                    results['check'] = None
-                if req_obj.resp_loans:
-                    results['loan'] = req_obj.resp_loans
-                else:
-                    results['loan'] = None
-            else:
+            try:
+                req_obj = UserRequest.objects.filter(req_national_id=query)[0]
+                print(req_obj)
+                if req_obj:
+                    if req_obj.resp_cheque:
+                        results['check'] = req_obj.resp_cheque
+                    else:
+                        results['check'] = None
+                    if req_obj.resp_loans:
+                        results['loan'] = req_obj.resp_loans
+                    else:
+                        results['loan'] = None
+            except IndexError:
                 results = data_getter.getdata(query)
 
             context = dict()
@@ -105,7 +106,7 @@ class GetDataFromInquiry:
                     json_obj_temp['title'] = {
                         'text': {'headline': '<strong>{0} {1}</strong>'.format(result['Name'], result['LName']),
                                  'text': '<p> تعداد وام های جاری :{0} </p><p>مجموع مبالغ : {1} مقدار اصل تسهیلات {2} و سود {3}</p>'.format(
-                                     str(len(result['FacilityInformationItems'])).translate(self.__TRANSLATOR),
+                                     str(len(result['FacilityInformationItems'][0])).translate(self.__TRANSLATOR),
                                      str(result['TotalAmTashilat']).translate(self.__TRANSLATOR),
                                      str(result['TotalAmOriginal']).translate(self.__TRANSLATOR),
                                      str(result['TotalAmBedehi']).translate(self.__TRANSLATOR)

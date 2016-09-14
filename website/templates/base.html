@@ -1,6 +1,6 @@
-{% load staticfiles i18n %}
+{% load static i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -19,7 +20,7 @@
         <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
         {#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">#}
         <!-- Your stuff: Third-party css libraries go here -->
-
+        <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
         <!-- This file store project specific CSS -->
         <link href="{% static 'css/project.css' %}" rel="stylesheet">
 
@@ -27,63 +28,101 @@
 
 </head>
 
-<body {% ifequal LANGUAGE_CODE 'fa' %}class="persian-content"{% endifequal %}>
-{{ request.LANGUAGE_CODE }}
+<body data-spy="scroll" data-target=".navbar-collapse" data-offset="50" {% ifequal LANGUAGE_CODE 'fa' %}class="persian-content"{% endifequal %}>
 
-<nav class="navbar navbar-inverse header-section">
-    <div class="container-fluid">
-        <div class="navbar-header navbar-right">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-navbar-collapse-1">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{% url 'home' %}">{% trans "Company Name" %}</a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
-            <ul class="nav navbar-nav" style="float: right;">
-                <li class="nav-item navbar-right"><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
-                <li class="nav-item"><a href="{% url 'about' %}">{% trans "About Us" %}</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-left">
-                {% if request.user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:detail' request.user.username  %}"><span class="glyphicon glyphicon-user"></span> {% trans "My Profile" %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_logout' %}"><span class="glyphicon glyphicon-log-out"></span>{% trans "Sign out" %}</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}"><span class="glyphicon glyphicon-log-in"></span>{% trans "Sign In" %}</a>
-                    </li>
-                {% endif %}
+<nav class="navbar navbar-inverse navbar-sticky-top" style="background-color: #009DDC;">
+    <div class="pull-xs-left">
+        <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-controls="bs-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+            &#9776;
+        </button>
+
+    </div>
+    <div class="collapse navbar-toggleable-xs" id="bs-navbar-collapse-1">
+        <img class="navbar-brand pull-xs-right" style="width : 30px;" src="{% static 'images/icbs_logo.png' %}" />
+        <a class="navbar-brand pull-xs-right" href="{% url 'home' %}">{% trans "Company Name" %}</a>
+        <ul class="nav navbar-nav pull-xs-right">
+            <li class="nav-item "><a class="nav-link" href="#slide-5">{% trans "Contact Us" %}</a></li>
+            <li class="nav-item "><a class="nav-link" href="#slide-3">{% trans "Our Customers" %}</a></li>
+            <li class="nav-item "><a class="nav-link" href="#slide-2">{% trans "About Us" %}</a></li>
+            <li class="nav-item "><a class="nav-link" href="#slide-home">{% trans "Home" %}</a></li>
+        </ul>
+        <ul class="nav navbar-nav pull-xs-left">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'meeting:request'%}"><i class="fa fa-book"></i> {% trans "Request Meeting" %}</a>
+            </li>
+            {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users:detail' request.user.username  %}"><i class="fa fa-gear"></i>  {% trans "My Profile" %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_logout' %}"><i class="fa fa-sign-out"></i> {% trans "Sign out" %}</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}"><i class="fa fa-sign-in"></i> {% trans "Sign In" %}</a>
+                </li>
+            {% endif %}
 
 
-            </ul>
-        </div>
+        </ul>
     </div>
 </nav>
-<div class="container">
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
-        {% endfor %}
-    {% endif %}
-</div>
+
+
 {% block head %}
 
-{% endblock %}
-<div class="container body-section">
 
+{% endblock %}
+
+{% if messages %}
+    <div class="container messages">
+
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                {{ message }}
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            </div>
+        {% endfor %}
+
+    </div>
+{% endif %}
+
+<div class="container-fluid body-section">
 
     {% block content %}
 
     {% endblock content %}
+    <div class="loader loader--style5" title="Please Wait..." style="display: none;">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+    <rect x="0" y="0" width="4" height="10" fill="#333">
+      <animateTransform attributeType="xml"
+        attributeName="transform" type="translate"
+        values="0 0; 0 20; 0 0"
+        begin="0" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+    <rect x="10" y="0" width="4" height="10" fill="#333">
+      <animateTransform attributeType="xml"
+        attributeName="transform" type="translate"
+        values="0 0; 0 20; 0 0"
+        begin="0.2s" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+    <rect x="20" y="0" width="4" height="10" fill="#333">
+      <animateTransform attributeType="xml"
+        attributeName="transform" type="translate"
+        values="0 0; 0 20; 0 0"
+        begin="0.4s" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+  </svg>
+    </div>
 
 </div> <!-- /container -->
 
-{% block modal %}{% endblock modal %}
+
+{% block modal %}
+
+{% endblock modal %}
+
 
 <!-- Le javascript
 ================================================== -->
@@ -93,7 +132,7 @@
     <script src="{% static 'js/jquery-3.1.0.js' %}"></script>
 
     <!-- Tether - a requirement for Bootstrap tooltips -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+    <script src="{% static 'js/tether.min.js'%}"></script>
 
     <!-- Latest compiled and minified JavaScript -->
 
@@ -106,6 +145,8 @@
 
 
 {% endblock javascript %}
+{% block extrajs %}{% endblock %}
+
 </body>
 </html>
 

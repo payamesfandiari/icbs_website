@@ -12,6 +12,36 @@
   border-color: #eed3d7;
 }
 
+.messages{
+  z-index: 999999;
+  position : fixed;
+  margin-top: 500px;
+
+}
+
+header{
+  z-index: 999999;
+}
+header .navbar {
+  z-index: 999999;
+  margin-bottom: 0px;
+  background-color: #009DDC;
+
+}
+header .navbar a{
+  color : #223843;
+}
+
+header .navbar a:focus,header .navbar a:hover{
+  color : #4C191B;
+}
+
+
+header .navbar .mainnav{
+  margin-right: 20px;
+  float: right;
+}
+
 /* This is a fix for the bootstrap4 alpha release */
 @media (max-width: 47.9em) {
   .navbar-nav .nav-item {
@@ -60,13 +90,16 @@
 
 
 .header-section{
-  padding: 10px 0px;
+  padding: 0px 0px;
+  width: 100%;
+}
+
+.margin-top-60{
+  margin-top: 60px;
 }
 
 .body-section {
   height: 100%;
-  padding-top: 100px;
-  padding-bottom: 100px;
 }
 
 .checkboxinput{
@@ -83,3 +116,165 @@
 th{
   text-align: right;
 }
+
+.loading{
+  display: none;
+}
+
+.loaded section{
+	opacity: 1;
+	-webkit-transition: opacity 300ms ease-out;
+	-moz-transition: opacity 300ms ease-out;
+	transition: opacity 300ms ease-out;
+}
+
+.loader{
+  height: 100px;
+  width: 100%;
+  text-align: center;
+  padding: 1em;
+  margin: 10em auto 1em;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+}
+
+.loader--style5{
+
+}
+
+svg path,
+svg rect{
+  fill: #FF6700;
+}
+
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+
+img {
+    vertical-align: middle;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+
+/* ==========================================================================
+   Parallax Scroll
+   ========================================================================== */
+body, html {
+	height: 100%;
+	min-height: 100%;
+  background-color: #F1FFFA;
+}
+
+h2 {
+	margin-top: 0;
+}
+
+section {
+	opacity: 0;
+}
+
+main {
+	overflow-x: hidden;
+}
+
+.hsContainer {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    opacity: 1;
+}
+.hsContent {
+    max-width: 450px;
+    margin: -150px auto 0 auto;
+    display: table-cell;
+    vertical-align: middle;
+    color: #F4F4F8;
+    padding: 0 8%;
+    text-align: center
+}
+.hsContent h2,
+	.copy h2 {
+		color: #223843;
+		font-size: 45px;
+		line-height: 48px;
+		margin-bottom: 12px;
+	}
+	.hsContent p {
+		width: 400px;
+		margin: 0 auto;
+		color: #4C191B;
+	}
+	.hsContent a {
+		color: #223843;
+		text-decoration: underline;
+	}
+	.bgBlack {
+		background-color: rgba(0,0,0,0.75);
+		padding: 3px 10px;
+	}
+
+
+.bcg {
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+/* Slide 1 */
+#slide-home .bcg {
+  background-image:url('../images/bcg_slide_home.png');
+}
+#slide-2 .bcg {
+    background: none;
+    background-color: #223843;
+    height: 310px;
+    text-align: center
+}
+
+#slide-3 .bcg {
+  background-image:url('../images/bcg_slide_contact.jpg');
+}
+.curtainContainer {
+    width: 100%;
+  height: 100%;
+    position: relative;
+}
+.curtainContainer .curtain {
+    width: 300%; height: 1px;
+    background-color: #000000;
+    position: absolute; top: 25%; left: 0;
+    opacity: 0
+}
+.curtainContainer .copy {
+    position: absolute;
+    bottom: 30%; left: 0;
+    width: 100%; text-align: center;
+}
+#slide-4 .bcg {background-image:url('../images/bcg_slide-4.jpg')}
+#slide-5 {position: relative;}
+
+#slide-5 .bcg3 {background: none; background-color: #223843; z-index: 2;  position: fixed; bottom: 0; left: 0; opacity: 0; z-index: 2}

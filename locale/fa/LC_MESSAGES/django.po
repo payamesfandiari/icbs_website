@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-21 09:16+0000\n"
+"POT-Creation-Date: 2016-08-30 08:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,30 +26,76 @@ msgstr ""
 msgid "Persian"
 msgstr ""
 
+#: website/meeting/models.py:13
+msgid "Name"
+msgstr "نام"
+
+#: website/meeting/models.py:14
+msgid "Lastname"
+msgstr "نام خانوادگی"
+
+#: website/meeting/models.py:15
+#, fuzzy
+#| msgid "Company Name"
+msgid "Company"
+msgstr "شرکت اعتبارسنجی سامان"
+
+#: website/meeting/models.py:16
+msgid "Phone"
+msgstr "تلفن"
+
+#: website/meeting/models.py:17
+msgid "Address"
+msgstr "آدرس"
+
+#: website/meeting/models.py:18
+msgid "City"
+msgstr "شهر"
+
+#: website/meeting/models.py:19
+msgid "Email"
+msgstr "ایمیل"
+
+#: website/meeting/models.py:20
+msgid "Website"
+msgstr "وبسایت"
+
+#: website/meeting/models.py:21
+msgid "Rank"
+msgstr "سمت"
+
+#: website/meeting/models.py:27
+msgid "Applicator"
+msgstr "درخواست دهنده"
+
+#: website/meeting/models.py:28
+msgid "Applicators"
+msgstr "درخواست دهنده ها"
+
 #: website/presentation/models.py:16
 #: website/templates/presentation/history.html:14
 msgid "action time"
-msgstr ""
+msgstr "زمان ایجاد"
 
 #: website/presentation/models.py:23
 #: website/templates/presentation/history.html:15
 msgid "user"
-msgstr ""
+msgstr "کاربر"
 
 #: website/presentation/models.py:25
 #: website/templates/presentation/history.html:16
 msgid "national id"
-msgstr ""
+msgstr "کد ملی"
 
 #: website/presentation/models.py:26
 #: website/templates/presentation/history.html:17
 msgid "response_cheque"
-msgstr ""
+msgstr "پاسخ چک"
 
 #: website/presentation/models.py:27
 #: website/templates/presentation/history.html:18
 msgid "response_loans"
-msgstr ""
+msgstr "پاسخ تسهیلات"
 
 #: website/templates/account/account_inactive.html:5
 #: website/templates/account/account_inactive.html:8
@@ -143,7 +189,7 @@ msgstr ""
 
 #: website/templates/account/login.html:7
 #: website/templates/account/login.html:11
-#: website/templates/account/login.html:44 website/templates/base.html:58
+#: website/templates/account/login.html:44 website/templates/base.html:63
 msgid "Sign In"
 msgstr ""
 
@@ -304,7 +350,7 @@ msgid ""
 "mail address</a>."
 msgstr ""
 
-#: website/templates/base.html:41 website/templates/pages/home.html:6
+#: website/templates/base.html:41 website/templates/pages/home.html:14
 msgid "Company Name"
 msgstr "شرکت اعتبارسنجی سامان"
 
@@ -316,11 +362,23 @@ msgstr "خانه"
 msgid "About Us"
 msgstr "درباره ما"
 
-#: website/templates/base.html:51
+#: website/templates/base.html:47
+msgid "Our Customers"
+msgstr "مشتریان ما"
+
+#: website/templates/base.html:48
+msgid "Contact Us"
+msgstr "ارتباط با ما"
+
+#: website/templates/base.html:52
+msgid "Request Meeting"
+msgstr "درخواست جلسه"
+
+#: website/templates/base.html:56
 msgid "My Profile"
 msgstr "پروفایل من"
 
-#: website/templates/base.html:54
+#: website/templates/base.html:59
 msgid "Sign out"
 msgstr "خروج"
 
@@ -335,25 +393,25 @@ msgstr ""
 msgid "User"
 msgstr "کاربر"
 
-#: website/templates/users/user_detail.html:11
-msgid "My Info"
-msgstr "مشخصات من"
-
-#: website/templates/users/user_detail.html:12
-msgid "E-Mail"
-msgstr "ایمیل"
-
-#: website/templates/users/user_detail.html:13
-msgid "Search"
-msgstr "جستجو"
-
-#: website/templates/users/user_detail.html:21
+#: website/templates/users/user_detail.html:17
 #, python-format
 msgid ""
 "%(name)s welcome. You have %(all)s overall which you spent %(spent)s of them."
 msgstr ""
 "%(name)s به سیستم خوش آمدید. شما از %(all)s درخواست خود را %(spent)s مصرف "
 "کرده اید."
+
+#: website/templates/users/user_detail.html:26
+msgid "My Info"
+msgstr "مشخصات من"
+
+#: website/templates/users/user_detail.html:27
+msgid "E-Mail"
+msgstr "ایمیل"
+
+#: website/templates/users/user_detail.html:28
+msgid "Search"
+msgstr "جستجو"
 
 #: website/users/models.py:16
 msgid "Name of User"

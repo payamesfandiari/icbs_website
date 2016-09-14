@@ -3,8 +3,23 @@
 
 {% block title %}{% trans "User"%}: {{ object.username }}{% endblock %}
 {% block head %}
+
+{% endblock %}
+
+{% block content %}
     {% if object == request.user %}
         <div class="container">
+            <div class="row">
+                <p>
+                    {% if object.num_of_requests_used >= object.num_of_requests %}
+                        <div class="alert-warning alert">کاربر گرامی تعداد تراکنش های شما به اتمام رسیده.</div>
+                    {% else %}
+                        <div class="alert alert-success">{% blocktrans with name=user.name|title all=object.num_of_requests spent=object.num_of_requests_used %}{{ name }} welcome. You have {{ all }} overall which you spent {{ spent }} of them.{% endblocktrans %}</div>
+                    {% endif %}
+                </p>
+
+            </div>
+
             <div class="row">
 
                 <div class="col-sm-12 ">
@@ -16,23 +31,10 @@
 
 
             </div>
-            <div class="row">
-                <p>
-                    {% if object.num_of_requests_used >= object.num_of_requests %}
-                        <div class="alert-info alert">کاربر گرامی تعداد تراکنش های شما به اتمام رسیده.</div>
-                    {% else %}
-                        <div class="alert alert-success">{% blocktrans with name=user.name|title all=object.num_of_requests spent=object.num_of_requests_used %}{{ name }} welcome. You have {{ all }} overall which you spent {{ spent }} of them.{% endblocktrans %}</div>
-                    {% endif %}
-                </p>
-
-            </div>
 
 
         </div>
     {% endif %}
-{% endblock %}
-
-{% block content %}
 
 {% endblock content %}
 

@@ -1,17 +1,117 @@
 {% extends "base.html" %}
-{% load staticfiles i18n %}
+{% load static i18n %}
 
 {% block content %}
-    <div class="row" style="text-align: center;">
-        <h1>{% trans "Company Name" %}</h1>
-    </div>
-    <div class="row" >
-        <div class="col-sm-6">.col-sm-4</div>
-        <div class="col-sm-6">.col-sm-4</div>
-    </div>
+    <main id="mainBody" class="loading">
+        <section id="slide-home" class="homeSlide">
+            <div id="home" class="bcg" data-200-top="background-position[swing] : -500px 0px" data-top-bottom="background-position: 0px 0px;"
+                 data-anchor-target="#slide-home">
+                <div class="hsContainer ">
+                    <div class="hsContent">
+                        <h2>شرکت اعتبارسنجی حافظ سامان ایرانیان</h2>
+                        <p>اولین ارائه دهنده خدمات اعتبارسنجی در ایران</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="slide-2">
+            <div id="about" class="bcg" id="page_about"
+                 data-0="background-color:rgb(241,255,250);"
+                 data-top="background-color:rgb(0,157,220);"
+                 data-anchor-target="#slide-2">
+                <div class="hsContainer container">
+                    <div class="row">
+
+                        <h2 style="margin: 20px 0px; color : #F4F4F8">ارایه کننده خدمات اعتبارسنجی به ۳۰+ شرکت</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide-3" class="homeSlide">
+            <div  id="customers" class="bcg"
+                  data-200-top="background-position: -200px 0px;"
+                  data-top-bottom="background-position: 0px 0px;"
+                  data-anchor-target="#slide-3">
+
+
+            <span style="display: block;position:relative;" data-bottom="transform:translate(-100px,0px);" data-100-top="transform:translate(-300px,100px);" data-target-anchor="#slide-2">
+                <p>SALAM</p>
+{#                <img src="{% static 'images/logo/farabiLogo.png' %}">#}
+            </span>
 
 
 
 
 
+                <div class="hsContainer">
+                    <div class="hsContent">
+
+                        <div class="plaxEl" data-106-top="opacity: 0" data--30p-top="opacity: 1;" data--60p-top="opacity: 0;" data-bottom="opacity: 1; position: fixed; top: 206px; width: 100%; left: 0;"  data-anchor-target="#slide-3">
+                            <h2>Fixed element fading in and out</h2>
+                            <p><span class="bgBlack">Text is fixed 206 pixels from the top, while the background is moving 40 pixels to the left.</span></p>
+                            <p><span class="bgBlack">Or did you think that the scooter is driving off?</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide-5" class="homeSlide">
+            <div id="contactus" class="bcg bcg3" data-300-bottom="opacity: 0;" data-100-bottom="opacity: 1;" data-anchor-target="#slide-5">
+                <div class="hsContainer">
+                    <div class="hsContent" data-100-bottom="opacity: 0;" data-bottom="opacity: 1;" data-anchor-target="#slide-5">
+                        <h2>The End</h2>
+                        <p>Not enough parallax goodness? Let me know in the comments or hit me up at <a href="https://www.twitter.com/ihatetomatoes" target="_blank">@ihatetomatoes</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}
+
+
+{% block extrajs %}
+    {# loading Skrollr.js for Parallex effect   #}
+    <script src="{% static 'js/jquery.smooth-scroll.min.js' %}"></script>
+    <script src = "{% static 'js/skrollr.min.js' %}"></script>
+    <script src = "{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+    <script>
+
+        $(function() {
+            $window = $(window);
+            $slide = $('.homeSlide');
+            $body = $('body');
+            $('.loader').show();
+            $body.imagesLoaded( function() {
+                setTimeout(function() {
+
+                    // Resize sections
+                    var s = skrollr.init({
+                        skrollrBody : 'mainBody',
+                    });
+                    winH = $window.height();
+                    if(winH <= 550) {
+                        winH = 550;
+                    }
+
+                    // Resize our slides
+                    $slide.height(winH);
+
+                    // Refresh Skrollr after resizing our sections
+                    // Fade in sections
+
+
+                    $('#mainBody').removeClass('loading').addClass('loaded');
+                    $('.loader').hide();
+                    s.refresh($slide);
+
+
+                }, 1000);
+            });
+
+        });
+
+    </script>
 {% endblock %}

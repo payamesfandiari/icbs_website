@@ -1,6 +1,7 @@
 
 from django import forms
 
+
 class SearchForm(forms.Form):
     query_n_id = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}),label='شماره ملی',required=True,
                                  max_length=10,min_length=10,error_messages={'query_n_id':'کد ملی یک عدد ده رقمی است.'})

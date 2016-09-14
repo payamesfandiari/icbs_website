@@ -4,7 +4,7 @@ from django.utils import timezone
 from django.utils.encoding import python_2_unicode_compatible
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-
+from django.contrib.postgres.fields import JSONField
 
 from config.settings import common
 
@@ -23,8 +23,9 @@ class UserRequest(models.Model):
         verbose_name=_('user'),
     )
     req_national_id = models.TextField(_('national id'), blank=False, null=False)
-    resp_cheque = models.TextField(_('response_cheque'), blank=True, null=True)
-    resp_loans = models.TextField(_('response_loans'), blank=True , null=True)
+    resp_cheque = JSONField(_('response_cheque'), blank=True, null=True)
+    resp_loans = JSONField(_('response_loans'), blank=True , null=True)
+
 
     def __str__(self):
         return self.req_national_id + str(self.user)

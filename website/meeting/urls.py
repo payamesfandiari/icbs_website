@@ -8,8 +8,9 @@ from . import views
 urlpatterns = [
     # URL pattern for the UserListView
     url(
-        regex=r'^$',
-        view=views.current_date,
-        name='currentdate'
+        regex=r'^request/$',
+        view=views.ApplicatorCreate.as_view(),
+        name='request'
     ),
+
 ]

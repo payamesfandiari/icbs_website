@@ -1,0 +1,59 @@
+
+/* Loading Image CSS Code */
+.preLoader{
+	width: 100%;
+	margin: 0;
+	height: 100%;
+	z-index: 999;
+	top: 45%;
+	position: relative;
+	margin: 0px auto;
+}
+
+#outerLogo{
+	z-index: 9999;	
+	transform-origin: 46px 46px;
+	animation: moveOut 2s 2s infinite ;
+
+}
+#innerLogo{
+	z-index: 9999;	
+	transform-origin: 46px 46px;
+	animation: moveIn 2s infinite ;
+}
+
+@keyframes moveOut{
+	0%  {
+		transform: scale(1);
+		opacity: 0.5;
+	}
+	50%  {
+		transform: scale(1.1);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 0.5;
+	}
+}
+@keyframes moveIn{
+	0%  {
+		transform: scale(1);
+		opacity: 1;
+	}
+	50%  {
+		transform: scale(0.8);
+		opacity: .5;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+/* End of Loading Image */
+
+
+
+
+
+
